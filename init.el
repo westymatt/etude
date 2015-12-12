@@ -48,5 +48,3 @@
 
 (if (file-exists-p "~/.emacs.d/local.el")
     (load-file "~/.emacs.d/local.el"))
-;(put 'erase-buffer 'disabled nil)
-;(put 'upcase-region 'disabled nil
