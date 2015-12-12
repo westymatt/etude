@@ -44,6 +44,7 @@
 ; Modes
 (require 'helm-mode-settings)
 (require 'projectile-mode-settings)
+(require 'js3-mode-settings)
 
 (if (file-exists-p "~/.emacs.d/local.el")
     (load-file "~/.emacs.d/local.el"))
