@@ -44,4 +44,6 @@
 
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 
+(global-set-key (kbd "C-c i") 'find-user-init-file)
+(global-set-key (kbd "C-c r") 'reload-config)
 (provide 'general-settings)
