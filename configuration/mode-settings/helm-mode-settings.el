@@ -12,6 +12,7 @@
 (setq helm-semantic-fuzzy-match t)
 (setq helm-lisp-fuzzy-completion t)
 (setq helm-M-x-fuzzy-match t)
+(setq helm-split-window-in-side-p t)
 
 (setq helm-mode t)
 (setq helm-adaptive-mode t)

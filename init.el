@@ -7,6 +7,9 @@
 (add-to-list 'load-path "~/.emacs.d/configuration/extensions/functions")
 (add-to-list 'load-path "~/.emacs.d/configuration/settings")
 (add-to-list 'load-path "~/.emacs.d/configuration/mode-settings")
+(add-to-list 'load-path "~/.emacs.d/themes")
+
+(require 'manoj-dark-theme)
 
 (require 'system-ext)
 (require 'plugin-ext)
@@ -23,7 +26,6 @@
     helm
     helm-ag
     helm-swoop
-    helm-ls-git
     helm-projectile
 	ido-vertical-mode
 	flycheck
@@ -37,7 +39,7 @@
   '(
     tronesque-theme
     slime-theme
-	cyberpunk-theme
+    cyberpunk-theme
     ) "Themes")
 
 (verify-or-install-packages packages)
