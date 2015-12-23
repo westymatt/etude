@@ -16,6 +16,6 @@
 (depends-on "use-package")
 (depends-on "pallet")
 
-(depends-on "tronesque")
+(depends-on "tronesque-theme")
 (depends-on "cyberpunk-theme")
 
