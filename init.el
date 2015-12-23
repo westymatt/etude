@@ -32,7 +32,9 @@
 	js3-mode
 	web-mode
 	powerline
+	powerline-evil
 	exec-path-from-shell
+	evil
     ) "Dependencies")
 
 (defvar themes
@@ -58,6 +60,7 @@
 (require 'web-mode-settings)
 (require 'ido-mode-settings)
 (require 'flycheck-mode-settings)
+(require 'evil-mode-settings)
 
 (if (file-exists-p "~/.emacs.d/local.el")
     (load-file "~/.emacs.d/local.el"))

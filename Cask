@@ -1,0 +1,21 @@
+(source gnu)
+(source melpa)
+
+(depends-on "magit")
+(depends-on "helm")
+(depends-on "helm-ag")
+(depends-on "helm-swoop")
+(depends-on "helm-projectile")
+(depends-on "ido-vertical-mode")
+(depends-on "flycheck")
+(depends-on "js3-mode")
+(depends-on "web-mode")
+(depends-on "powerline")
+(depends-on "exec-path-from-shell")
+(depends-on "evil")
+(depends-on "use-package")
+(depends-on "pallet")
+
+(depends-on "tronesque")
+(depends-on "cyberpunk-theme")
+
