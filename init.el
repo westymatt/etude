@@ -57,7 +57,7 @@
 (use-package projectile
   :ensure t
   :defer t
-  :diminish projectile-mode
+  ;:diminish projectile-mode
   :config
   (progn
 	(setq projectile-keymap-prefix (kbd "C-c p"))
@@ -93,9 +93,38 @@
 	(add-to-list 'auto-mode-alist '("\\.dust\\'" . web-mode))
 	(add-to-list 'auto-mode-alist '("\\.ftl\\'" . web-mode))
 	))
-(require 'ido-mode-settings)
-(require 'flycheck-mode-settings)
-(require 'evil-mode-settings)
+
+(use-package ido-vertical-mode
+  :ensure t
+  :defer t
+  :config
+  (progn
+	(setq ido-enable-flex-matching t)
+	(setq ido-everywhere t)
+	(setq ido-create-new-buffer 'always)
+	(setq ido-save-directory-list-file "~/.emacs.d/cache/ido/ido.last")
+	(setq ido-enable-last-directory-history t)
+	(setq ido-use-filename-at-point nil)
+	(setq ido-case-fold t)
+	(ido-vertical-mode t)
+	ido-mode 'both))
+
+(use-package flycheck
+  :ensure t
+  :defer t
+  :config
+  (progn
+	(add-hook 'after-init-hook #'global-flycheck-mode)
+	(add-hook 'js-mode-hook (lambda ()
+							  (flychecker-select-checker 'javascript-standard)
+							  (flycheck-mode)))))
+
+(use-package evil
+  :ensure t
+  :defer t
+  :config
+  (progn
+	(evil-mode 1)))
 
 (if (file-exists-p "~/.emacs.d/local.el")
     (load-file "~/.emacs.d/local.el"))
