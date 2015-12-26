@@ -31,9 +31,21 @@
 (require 'os-specific-settings)
 
 ; Modes
+(use-package expand-region
+  :ensure expand-region
+  :defer t
+  :bind ("C-=" . er/expand-region))
+
+(use-package company
+  :ensure t
+  :config
+  (add-hook 'prog-mode-hook 'company-mode))
+
 (use-package helm
   :ensure t
-  :diminish helm-mode
+  :init
+  (progn
+	(require 'helm-config))
   :bind (("C-x b") . helm-mini)
   ("M-x" . helm-M-x)
   ("C-x C-b" . helm-buffers-list)
@@ -56,14 +68,10 @@
 
 (use-package projectile
   :ensure t
-  :defer t
-  ;:diminish projectile-mode
   :config
   (progn
 	(setq projectile-keymap-prefix (kbd "C-c p"))
-	(setq projectile-completion-system 'helm))
-  :config
-  (progn
+	(setq projectile-completion-system 'helm)
 	(projectile-global-mode)
 	(helm-projectile-on)))
 
@@ -106,7 +114,7 @@
 	(setq ido-enable-last-directory-history t)
 	(setq ido-use-filename-at-point nil)
 	(setq ido-case-fold t)
-	(ido-vertical-mode t)
+	(ido-vertical-mode 1)
 	ido-mode 'both))
 
 (use-package flycheck

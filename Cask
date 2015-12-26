@@ -15,6 +15,8 @@
 (depends-on "evil")
 (depends-on "use-package")
 (depends-on "pallet")
+(depends-on "company")
+(depends-on "expand-region")
 
 (depends-on "tronesque-theme")
 (depends-on "cyberpunk-theme")
