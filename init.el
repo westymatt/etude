@@ -107,6 +107,7 @@
   :config
   (progn
 	(setq ido-enable-flex-matching t)
+	(setq ido-enable-prefix nil)
 	(setq ido-everywhere t)
 	(setq ido-create-new-buffer 'always)
 	(setq ido-save-directory-list-file "~/.emacs.d/cache/ido/ido.last")
