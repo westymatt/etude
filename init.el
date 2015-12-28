@@ -17,7 +17,6 @@
 (require 'use-package)
 
 (require 'system-ext)
-(require 'plugin-ext)
 (require 'rename-ext)
 (require 'compile-ext)
 (require 'display-ext)
@@ -102,9 +101,9 @@
 	(add-to-list 'auto-mode-alist '("\\.ftl\\'" . web-mode))
 	))
 
-(use-package ido-vertical-mode
-  :ensure t
-  :defer t
+(use-package ido
+  :init (progn (ido-mode 1)
+			   (ido-everywhere 1))
   :config
   (progn
 	(setq ido-enable-flex-matching t)
@@ -113,9 +112,14 @@
 	(setq ido-save-directory-list-file "~/.emacs.d/cache/ido/ido.last")
 	(setq ido-enable-last-directory-history t)
 	(setq ido-use-filename-at-point nil)
-	(setq ido-case-fold t)
-	(ido-vertical-mode 1)
-	ido-mode 'both))
+	(setq ido-case-fold t)))
+
+(use-package ido-vertical-mode
+  :ensure t
+  :defer t
+  :config
+  (progn
+	(ido-vertical-mode 1)))
 
 (use-package flycheck
   :ensure t
