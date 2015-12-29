@@ -11,6 +11,7 @@
 (depends-on "js3-mode")
 (depends-on "web-mode")
 (depends-on "powerline")
+(depends-on "powerline-evil")
 (depends-on "exec-path-from-shell")
 (depends-on "evil")
 (depends-on "use-package")
