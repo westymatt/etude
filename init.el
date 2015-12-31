@@ -102,8 +102,6 @@
 	))
 
 (use-package ido
-  :init (progn (ido-mode 1)
-			   (ido-everywhere 1))
   :config
   (progn
 	(setq ido-enable-flex-matching t)
@@ -112,8 +110,10 @@
 	(setq ido-create-new-buffer 'always)
 	(setq ido-save-directory-list-file "~/.emacs.d/cache/ido/ido.last")
 	(setq ido-enable-last-directory-history t)
-	(setq ido-use-filename-at-point nil)
-	(setq ido-case-fold t)))
+	(setq ido-use-filename-at-point 'nil)
+	(setq ido-case-fold t)
+	(ido-mode 'both)
+	(ido-everywhere t)))
 
 (use-package ido-vertical-mode
   :ensure t
@@ -137,9 +137,13 @@
   :defer t
   :config
   (progn
+	(setq evil-search-module 'evil-search
+		  evil-want-C-u-scroll t
+		  evil-want-C-w-in-emacs-state t)
 	(evil-mode 1)))
 
 (if (file-exists-p "~/.emacs.d/local.el")
     (load-file "~/.emacs.d/local.el"))
 
 ;;; init.el ends here
+(put 'erase-buffer 'disabled nil)
