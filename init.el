@@ -93,7 +93,8 @@
 (use-package company
   :ensure t
   :config
-  (add-hook 'prog-mode-hook 'company-mode))
+  (add-to-list 'company-backends 'company-tern)
+  (global-company-mode))
 
 (use-package helm
   :ensure t
@@ -148,11 +149,6 @@
   :ensure t
   :config (progn
 			(add-hook 'js3-mode-hook (lambda () (tern-mode t)))))
-
-(use-package company-tern
-  :ensure t
-  :config (progn
-			(add-to-list 'company-backends 'company-tern)))
 
 (use-package web-mode
   :ensure t
