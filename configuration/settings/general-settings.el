@@ -44,6 +44,10 @@
 
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 
+(setq mac-command-modifier 'control)
+(setq mac-control-modifier 'super)
+(global-set-key (kbd "S-c") 'kill-ring-save)
+
 (global-set-key (kbd "C-c i") 'find-user-init-file)
 (global-set-key (kbd "C-c r") 'reload-config)
 (provide 'general-settings)

@@ -28,6 +28,7 @@
 (require 'theme-settings)
 (require 'powerline-settings)
 (require 'os-specific-settings)
+(require 'guide-key-settings)
 
 ; Modes
 (use-package expand-region

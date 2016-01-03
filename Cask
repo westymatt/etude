@@ -1,6 +1,7 @@
 (source gnu)
 (source melpa)
 
+(depends-on "guide-key")
 (depends-on "magit")
 (depends-on "helm")
 (depends-on "helm-ag")
