@@ -16,22 +16,77 @@
 (require 'pallet)
 (require 'use-package)
 
-(require 'system-ext)
-(require 'rename-ext)
-(require 'compile-ext)
-(require 'display-ext)
-(require 'buffer-ext)
-(require 'terminal-ext)
+;;; Settings
 
-; Settings
-(require 'general-settings)
-(require 'theme-settings)
-(require 'powerline-settings)
-(require 'os-specific-settings)
+;;; General
+(setq inhibit-splash-screen t)
+(setq inhibit-startup-message t)
 
-; Modes
+(setq auto-save-default nil auto-save-timeout 0)
+(setq auto-save-list-file-prefix nil)
+(setq backup-inhibited t)
+
+(setq make-backup-files nil)
+(setq show-trailing-whitespace t)
+(toggle-truncate-lines)
+(setq-default truncate-lines 0)
+(setq-default tab-width 4)
+(setq redisplay-dont-pause t)
+(setq tab-width 4)
+(setq line-number-mode t)
+(setq column-number-mode t)
+(global-hl-line-mode 1)
+
+(setq-default case-fold-search 1)
+
+(setq-default show-trailing-whitespace t)
+
+(transient-mark-mode 1)
+
+(scroll-bar-mode 0)
+
+(menu-bar-mode 0)
+
+;; ===== Disable toolbar =====
+(tool-bar-mode -1)
+
+;; ===== Always show line numbers =====
+(global-linum-mode 1)
+
+(column-number-mode 1)
+
+;;(global-visual-line-mode 1)
+
+(show-paren-mode 1)
+(electric-pair-mode 1)
+
+(setq ring-bell-function 'ignore)
+
+;(global-set-key (kbd "C-x C-b") 'ibuffer)
+;(autoload 'ibuffer "ibuffer" "List buffers." t)
+
+(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+
+(defun load-user-init-file-in-buffer ()
+  (interactive)
+  (switch-to-buffer (find-file-noselect "~/.emacs.d/init.el")))
+(global-set-key (kbd "C-c i") 'load-user-init-file-in-buffer)
+
+;;; Theme
+(load-theme 'cyberpunk :no-confirm)
+
+(when (eq system-type 'darwin)
+  (set-frame-font "DejaVu Sans-10" t t)
+  (exec-path-from-shell-initialize))
+
+;;; Modes
+(use-package powerline
+  :ensure t
+  :config (progn
+			(powerline-default-theme)))
+
 (use-package expand-region
-  :ensure expand-region
+  :ensure t
   :defer t
   :bind ("C-=" . er/expand-region))
 
@@ -85,12 +140,19 @@
 	(setq js3-expr-indent-offset 2)
 	(setq js3-indent-on-enter-key t)
 	(setq js3-lazy-commas t)
-	(setq js3-lazy-dots t)
 	(setq js3-lazy-operators t)
 	(setq js3-paren-indent-offset 2)
-	(setq js3-square-indent-offset 4)
-	(setq js3-consistent-level-indent-inner-bracket t)
-	))
+	(setq js3-square-indent-offset 2)))
+
+(use-package tern
+  :ensure t
+  :config (progn
+			(add-hook 'js3-mode-hook (lambda () (tern-mode t)))))
+
+(use-package company-tern
+  :ensure t
+  :config (progn
+			(add-to-list 'company-backends 'company-tern)))
 
 (use-package web-mode
   :ensure t
@@ -132,7 +194,18 @@
 							  (flychecker-select-checker 'javascript-standard)
 							  (flycheck-mode)))))
 
+(use-package cmake-mode
+  :ensure t
+  :config (progn
+			(setq auto-mode-alist (append '(("CMakeLists\\.txt\\'" . cmake-mode)) '(("\\.cmake\\'" . cmake-mode)) auto-mode-alist))))
+
+(use-package cmake-ide
+  :ensure t
+  :config (progn
+		  (cmake-ide-setup)))
+
 (use-package evil
+  :disabled t
   :ensure t
   :defer t
   :config
