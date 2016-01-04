@@ -39,7 +39,8 @@
 (use-package company
   :ensure t
   :config
-  (add-hook 'prog-mode-hook 'company-mode))
+  (add-to-list 'company-backends 'company-tern)
+  (global-company-mode))
 
 (use-package helm
   :ensure t
@@ -93,6 +94,11 @@
 	(setq js3-consistent-level-indent-inner-bracket t)
 	))
 
+(use-package tern
+  :ensure t
+  :config (progn
+			(add-hook 'js3-mode-hook (lambda () (tern-mode t)))))
+
 (use-package web-mode
   :ensure t
   :defer t
@@ -132,6 +138,15 @@
 	(add-hook 'js-mode-hook (lambda ()
 							  (flychecker-select-checker 'javascript-standard)
 							  (flycheck-mode)))))
+(use-package cmake-mode
+  :ensure t
+  :config (progn
+			(setq auto-mode-alist (append '(("CMakeLists\\.txt\\'" . cmake-mode)) '(("\\.cmake\\'" . cmake-mode)) auto-mode-alist))))
+
+(use-package cmake-ide
+  :ensure t
+  :config (progn
+		  (cmake-ide-setup)))
 
 (use-package evil
   :ensure t

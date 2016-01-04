@@ -19,7 +19,10 @@
 (depends-on "pallet")
 (depends-on "company")
 (depends-on "expand-region")
+(depends-on "cmake-mode")
+(depends-on "cmake-ide")
+(depends-on "tern")
+(depends-on "company-tern")
 
 (depends-on "tronesque-theme")
 (depends-on "cyberpunk-theme")
-

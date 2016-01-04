@@ -47,7 +47,8 @@
 (setq mac-command-modifier 'control)
 (setq mac-control-modifier 'super)
 (global-set-key (kbd "S-c") 'kill-ring-save)
-
 (global-set-key (kbd "C-c i") 'find-user-init-file)
 (global-set-key (kbd "C-c r") 'reload-config)
+(global-set-key (kbd "C-;") 'evil-normal-state)
+
 (provide 'general-settings)
