@@ -4,3 +4,5 @@ projectile-bookmarks.eld
 recentf
 *~
 .cask/*
+.#*
+eshell/
