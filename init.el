@@ -79,6 +79,10 @@
   (set-frame-font "DejaVu Sans-10" t t)
   (exec-path-from-shell-initialize))
 
+;;; Bindings
+(global-set-key (kbd "C-c c") 'comment-region)
+(global-set-key (kbd "C-c u") 'uncomment-region)
+
 ;;; Modes
 (use-package powerline
   :ensure t
@@ -180,13 +184,20 @@
   (progn
 	(ido-vertical-mode 1)))
 
+(use-package neotree
+  :ensure t
+  :defer t
+  :config
+  (progn
+	(setq projectile-switch-project-action 'neotree-projectile-action)))
+
 (use-package flycheck
   :ensure t
   :defer t
   :config
   (progn
 	(add-hook 'after-init-hook #'global-flycheck-mode)
-	(add-hook 'js-mode-hook (lambda ()
+	(add-hook 'js3-mode-hook (lambda ()
 							  (flychecker-select-checker 'javascript-standard)
 							  (flycheck-mode)))))
 
