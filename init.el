@@ -198,7 +198,11 @@
 (use-package cmake-ide
   :ensure t
   :config (progn
-		  (cmake-ide-setup)))
+			(cmake-ide-setup)))
+
+(use-package undo-tree
+  :diminish undo-tree-mode
+  :init (global-undo-tree-mode))
 
 (use-package evil
   :disabled t
