@@ -22,6 +22,7 @@
 (depends-on "cmake-ide")
 (depends-on "tern")
 (depends-on "company-tern")
+(depends-on "neotree")
 
 (depends-on "tronesque-theme")
 (depends-on "cyberpunk-theme")
