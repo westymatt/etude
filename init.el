@@ -16,6 +16,49 @@
 (require 'pallet)
 (require 'use-package)
 
+; GENERAL SETTINGS
+;================================================================
+;================================================================
+(setq inhibit-splash-screen t)
+(setq inhibit-startup-message t)
+
+(setq auto-save-default nil auto-save-timeout 0)
+(setq auto-save-list-file-prefix nil)
+(setq backup-inhibited t)
+(setq make-backup-files nil)
+(setq show-trailing-whitespace t)
+(toggle-truncate-lines)
+(setq-default truncate-lines 0)
+(setq-default tab-width 4)
+(setq tab-width 4)
+(setq line-number-mode t)
+(setq column-number-mode t)
+(global-hl-line-mode 1)
+
+(setq-default case-fold-search 1)
+(setq-default show-trailing-whitespace t)
+(transient-mark-mode 1)
+(scroll-bar-mode 0)
+(menu-bar-mode 0)
+
+(tool-bar-mode -1) ; DISABLE TOOLBAR
+(global-linum-mode 1) ; ALWAYS SHOW LINE NUMBERS
+(column-number-mode 1)
+(show-paren-mode 1)
+(electric-pair-mode 1)
+(setq ring-bell-function 'ignore)
+(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+
+(setq mac-command-modifier 'control)
+(setq mac-control-modifier 'super)
+(global-set-key (kbd "S-c") 'kill-ring-save)
+(global-set-key (kbd "C-c i") 'find-user-init-file)
+(global-set-key (kbd "C-c r") 'reload-config)
+(global-set-key (kbd "C-;") 'evil-normal-state)
+;================================================================
+;================================================================
+; END GENERAL SETTINGS
+
 (require 'system-ext)
 (require 'rename-ext)
 (require 'compile-ext)
@@ -24,7 +67,6 @@
 (require 'terminal-ext)
 
 ; Settings
-(require 'general-settings)
 (require 'theme-settings)
 (require 'powerline-settings)
 (require 'os-specific-settings)
@@ -153,6 +195,8 @@
   :defer t
   :config
   (progn
+	(setq evil-overriding-maps nil)
+	(setq evil-intercept-maps nil)
 	(evil-mode 1)))
 
 (if (file-exists-p "~/.emacs.d/local.el")
