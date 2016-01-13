@@ -87,7 +87,7 @@
 (use-package powerline
   :ensure t
   :config (progn
-			(powerline-default-theme)))
+			(powerline-evil-vim-color-theme)))
 
 (use-package expand-region
   :ensure t
@@ -212,11 +212,11 @@
 		  (cmake-ide-setup)))
 
 (use-package evil
-  :disabled t
   :ensure t
   :defer t
   :config
   (progn
+	(global-set-key (kbd "C-;") 'evil-normal-state)
 	(setq evil-search-module 'evil-search
 		  evil-want-C-u-scroll t
 		  evil-want-C-w-in-emacs-state t)
