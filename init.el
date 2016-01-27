@@ -49,12 +49,17 @@
 (setq ring-bell-function 'ignore)
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 
+; KEY BINDINGS
 (setq mac-command-modifier 'control)
 (setq mac-control-modifier 'super)
+
+(global-set-key (kbd "C-`") (lambda () (interactive) (find-file "~/.emacs.d/init.el")))
+(global-set-key (kbd "C-;") 'evil-normal-state)
+(global-set-key (kbd "C-+") 'toggle-frame-maximized)
 (global-set-key (kbd "S-c") 'kill-ring-save)
 (global-set-key (kbd "C-c i") 'find-user-init-file)
 (global-set-key (kbd "C-c r") 'reload-config)
-(global-set-key (kbd "C-;") 'evil-normal-state)
+(global-set-key (kbd "C-x C-r") 'recentf-open-files)
 ;================================================================
 ;================================================================
 ; END GENERAL SETTINGS
@@ -72,7 +77,9 @@
 (require 'os-specific-settings)
 (require 'guide-key-settings)
 
-; Modes
+; MODES
+;================================================================
+;================================================================
 (use-package expand-region
   :ensure expand-region
   :defer t
@@ -150,6 +157,11 @@
 	(add-to-list 'auto-mode-alist '("\\.ftl\\'" . web-mode))
 	))
 
+(use-package less-css-mode
+  :ensure t
+  :defer t
+)
+
 (use-package ido
   :init (progn (ido-mode 1)
 			   (ido-everywhere 1))
@@ -199,7 +211,13 @@
 	(setq evil-intercept-maps nil)
 	(evil-mode 1)))
 
+(recentf-mode 1)
+(setq recentf-max-menu-items 25)
+
 (if (file-exists-p "~/.emacs.d/local.el")
     (load-file "~/.emacs.d/local.el"))
+;================================================================
+;================================================================
+; END MODES SETUP
 
 ;;; init.el ends here
