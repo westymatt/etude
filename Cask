@@ -27,4 +27,5 @@
 
 (depends-on "tronesque-theme")
 (depends-on "cyberpunk-theme")
+(depends-on "calmer-forest-theme")
 

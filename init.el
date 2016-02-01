@@ -73,7 +73,7 @@
 (global-set-key (kbd "C-c i") 'load-user-init-file-in-buffer)
 
 ;;; Theme
-(load-theme 'cyberpunk :no-confirm)
+(load-theme 'calmer-forest :no-confirm)
 
 (when (eq system-type 'darwin)
   (set-frame-font "DejaVu Sans-10" t t)
