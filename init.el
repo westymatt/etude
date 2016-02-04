@@ -3,12 +3,6 @@
 ;;; A simple emacs configuration based on a few good extensions
 
 ;;; Code:
-(add-to-list 'load-path "~/.emacs.d/configuration/extensions")
-(add-to-list 'load-path "~/.emacs.d/configuration/extensions/functions")
-(add-to-list 'load-path "~/.emacs.d/configuration/settings")
-(add-to-list 'load-path "~/.emacs.d/configuration/mode-settings")
-(add-to-list 'load-path "~/.emacs.d/themes")
-
 (if (file-exists-p "~/.cask/cask.el")
 	(require 'cask "~/.cask/cask.el")
   (require 'cask "/usr/local/share/emacs/site-lisp/cask/cask.el"))
@@ -35,6 +29,7 @@
 (setq tab-width 4)
 (setq line-number-mode t)
 (setq column-number-mode t)
+(global-auto-revert-mode t)
 (global-hl-line-mode 1)
 
 (setq-default case-fold-search 1)
@@ -73,7 +68,7 @@
 (global-set-key (kbd "C-c i") 'load-user-init-file-in-buffer)
 
 ;;; Theme
-(load-theme 'cyberpunk :no-confirm)
+(load-theme 'lush :no-confirm)
 
 (when (eq system-type 'darwin)
   (set-frame-font "DejaVu Sans-10" t t)
@@ -97,7 +92,7 @@
 (use-package company
   :ensure t
   :config
-  (add-to-list 'company-backends 'company-tern)
+  ;(add-to-list 'company-backends 'company-tern)
   (global-company-mode))
 
 (use-package helm
@@ -151,6 +146,7 @@
 	(setq js3-square-indent-offset 2)))
 
 (use-package tern
+  :disabled t
   :ensure t
   :config (progn
 			(add-hook 'js3-mode-hook (lambda () (tern-mode t)))))
@@ -163,6 +159,10 @@
 	(add-to-list 'auto-mode-alist '("\\.dust\\'" . web-mode))
 	(add-to-list 'auto-mode-alist '("\\.ftl\\'" . web-mode))
 	))
+
+(use-package less-css-mode
+  :ensure t
+  :defer t)
 
 (use-package ido
   :config
@@ -211,6 +211,13 @@
   :ensure t
   :config (progn
 			(cmake-ide-setup)))
+(use-package clang-format
+  :ensure t
+  :config (progn
+			(defun clang-format-before-save ()
+			  (interactive)
+			  (when (eq major-mode 'c++-mode) (clang-format-buffer)))
+			(add-hook 'before-save-hook 'clang-format-before-save)))
 
 (use-package undo-tree
   :diminish undo-tree-mode
