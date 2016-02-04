@@ -224,6 +224,7 @@
   :init (global-undo-tree-mode))
 
 (use-package evil
+  :disabled t
   :ensure t
   :defer t
   :config
