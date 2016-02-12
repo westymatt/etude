@@ -134,16 +134,7 @@
   :defer t
   :config
   (progn
-	(setq js3-auto-indent-p t)
-	(setq js3-curly-indent-offset 0)
-	(setq js3-enter-indents-newline t)
-	(setq js3-consistent-level-indent-inner-bracket t)
-	(setq js3-expr-indent-offset 2)
-	(setq js3-indent-on-enter-key t)
-	(setq js3-lazy-commas t)
-	(setq js3-lazy-operators t)
-	(setq js3-paren-indent-offset 2)
-	(setq js3-square-indent-offset 2)))
+	(setq js3-consistent-level-indent-inner-bracket t)))
 
 (use-package tern
   :disabled t
@@ -224,12 +215,15 @@
   :init (global-undo-tree-mode))
 
 (use-package evil
-  :disabled t
   :ensure t
   :defer t
   :config
   (progn
+	(global-evil-leader-mode)
 	(global-set-key (kbd "C-;") 'evil-normal-state)
+	(setq evil-auto-indent t)
+	(setq evil-regexp-search t)
+	(setq evil-want-C-i-jump t)
 	(setq evil-search-module 'evil-search
 		  evil-want-C-u-scroll t
 		  evil-want-C-w-in-emacs-state t)

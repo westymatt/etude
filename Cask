@@ -16,6 +16,7 @@
 (depends-on "powerline-evil")
 (depends-on "exec-path-from-shell")
 (depends-on "evil")
+(depends-on "evil-leader")
 (depends-on "god-mode")
 (depends-on "use-package")
 (depends-on "pallet")
