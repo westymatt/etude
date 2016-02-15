@@ -25,6 +25,7 @@
 (depends-on "company-tern")
 (depends-on "recentf")
 (depends-on "less-css-mode")
+(depends-on "jsx-mode")
 
 (depends-on "tronesque-theme")
 (depends-on "cyberpunk-theme")

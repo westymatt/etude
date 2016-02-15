@@ -29,8 +29,8 @@
 (setq show-trailing-whitespace t)
 (toggle-truncate-lines)
 (setq-default truncate-lines 0)
-(setq-default tab-width 4)
-(setq tab-width 4)
+(setq-default tab-width 2)
+(setq tab-width 2)
 (setq line-number-mode t)
 (setq column-number-mode t)
 (global-hl-line-mode 1)
@@ -60,6 +60,10 @@
 (global-set-key (kbd "C-c i") 'find-user-init-file)
 (global-set-key (kbd "C-c r") 'reload-config)
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)
+;(global-set-key (kbd "C-?") 'comment-region)
+;(global-set-key (kbd "C->") 'uncomment-region)
+;(global-set-key (kbd "C-/") 'comment-dwim)
+;(global-set-key (kbd "C-.") 'comment-kill)
 ;================================================================
 ;================================================================
 ; END GENERAL SETTINGS
@@ -80,6 +84,12 @@
 ; MODES
 ;================================================================
 ;================================================================
+;; Set to the location of your Org files on your local system
+(setq org-directory "~/org")
+;; Set to the name of the file where new notes will be stored
+(setq org-mobile-inbox-for-pull "~/org/flagged.org")
+(setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
+
 (use-package expand-region
   :ensure expand-region
   :defer t
@@ -139,7 +149,7 @@
 	(setq js3-lazy-dots t)
 	(setq js3-lazy-operators t)
 	(setq js3-paren-indent-offset 2)
-	(setq js3-square-indent-offset 4)
+	(setq js3-square-indent-offset 2)
 	(setq js3-consistent-level-indent-inner-bracket t)
 	))
 
@@ -153,6 +163,7 @@
   :defer t
   :config
   (progn
+	(add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
 	(add-to-list 'auto-mode-alist '("\\.dust\\'" . web-mode))
 	(add-to-list 'auto-mode-alist '("\\.ftl\\'" . web-mode))
 	))
@@ -209,10 +220,11 @@
   (progn
 	(setq evil-overriding-maps nil)
 	(setq evil-intercept-maps nil)
+	(setq evil-auto-indent f)
 	(evil-mode 1)))
 
 (recentf-mode 1)
-(setq recentf-max-menu-items 25)
+(setq recentf-max-menu-items 50)
 
 (if (file-exists-p "~/.emacs.d/local.el")
     (load-file "~/.emacs.d/local.el"))
