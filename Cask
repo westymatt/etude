@@ -26,6 +26,7 @@
 (depends-on "recentf")
 (depends-on "less-css-mode")
 (depends-on "jsx-mode")
+(depends-on "move-text")
 
 (depends-on "tronesque-theme")
 (depends-on "cyberpunk-theme")
