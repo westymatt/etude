@@ -64,6 +64,7 @@
 ;(global-set-key (kbd "C->") 'uncomment-region)
 ;(global-set-key (kbd "C-/") 'comment-dwim)
 ;(global-set-key (kbd "C-.") 'comment-kill)
+(move-text-default-bindings)
 ;================================================================
 ;================================================================
 ; END GENERAL SETTINGS
@@ -84,12 +85,6 @@
 ; MODES
 ;================================================================
 ;================================================================
-;; Set to the location of your Org files on your local system
-(setq org-directory "~/org")
-;; Set to the name of the file where new notes will be stored
-(setq org-mobile-inbox-for-pull "~/org/flagged.org")
-(setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
-
 (use-package expand-region
   :ensure expand-region
   :defer t
@@ -168,12 +163,18 @@
 	(add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
 	(add-to-list 'auto-mode-alist '("\\.dust\\'" . web-mode))
 	(add-to-list 'auto-mode-alist '("\\.ftl\\'" . web-mode))
+	(setq web-mode-markup-indent-offset 2)
+	(setq web-mode-code-indent-offset 2)
+	(setq-default indent-tabs-mode nil)
 	))
 
 (use-package less-css-mode
   :ensure t
   :defer t
 )
+
+(setq standard-indent 2)
+(setq css-indent-offset 2)
 
 (use-package ido
   :init (progn (ido-mode 1)
