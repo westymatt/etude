@@ -229,6 +229,7 @@
 		  evil-want-C-w-in-emacs-state t)
 	(evil-mode 1)))
 
+
 (use-package god-mode
   :disabled t
   :ensure t
