@@ -60,10 +60,7 @@
 (global-set-key (kbd "C-c i") 'find-user-init-file)
 (global-set-key (kbd "C-c r") 'reload-config)
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)
-;(global-set-key (kbd "C-?") 'comment-region)
-;(global-set-key (kbd "C->") 'uncomment-region)
-;(global-set-key (kbd "C-/") 'comment-dwim)
-;(global-set-key (kbd "C-.") 'comment-kill)
+
 (move-text-default-bindings)
 ;================================================================
 ;================================================================
