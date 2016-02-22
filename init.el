@@ -136,6 +136,15 @@
   (progn
 	(setq js3-consistent-level-indent-inner-bracket t)))
 
+(use-package js2-mode
+  :ensure t
+  :defer t
+  :mode (("\\.json$" . js2-mode)
+		 ("\\.js$" . js2-mode))
+  :config
+  (progn
+	(add-hook 'js2-mode-hook (lambda () (progn (setq js2-basic-offset 2) (setq js2-bounce-indent-p t))))))
+
 (use-package tern
   :disabled t
   :ensure t
@@ -202,6 +211,7 @@
   :ensure t
   :config (progn
 			(cmake-ide-setup)))
+
 (use-package clang-format
   :ensure t
   :config (progn

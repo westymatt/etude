@@ -9,6 +9,7 @@
 (depends-on "ido-vertical-mode")
 (depends-on "flycheck")
 (depends-on "js3-mode")
+(depends-on "js2-mode")
 (depends-on "web-mode")
 (depends-on "less-css-mode")
 (depends-on "powerline")
