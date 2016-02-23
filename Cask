@@ -1,6 +1,7 @@
 (source gnu)
 (source melpa)
 
+(depends-on "guide-key")
 (depends-on "magit")
 (depends-on "helm")
 (depends-on "helm-ag")
@@ -29,4 +30,3 @@
 
 (depends-on "tronesque-theme")
 (depends-on "cyberpunk-theme")
-(depends-on "meacupla-theme")

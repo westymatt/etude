@@ -1,7 +1,13 @@
 ;;; init.el --- Etude Emacs Configuration
 ;;; Commentary:
 ;;; A simple emacs configuration based on a few good extensions
+
 ;;; Code:
+(add-to-list 'load-path "~/.emacs.d/configuration/extensions")
+(add-to-list 'load-path "~/.emacs.d/configuration/extensions/functions")
+(add-to-list 'load-path "~/.emacs.d/configuration/settings")
+(add-to-list 'load-path "~/.emacs.d/configuration/mode-settings")
+(add-to-list 'load-path "~/.emacs.d/themes")
 
 (if (file-exists-p "~/.cask/cask.el")
 	(require 'cask "~/.cask/cask.el")
@@ -9,11 +15,6 @@
 (cask-initialize)
 (require 'pallet)
 (require 'use-package)
-
-; APPEARANCE SETTINGS
-;================================================================
-(load-theme 'cyberpunk :no-confirm)
-(set-frame-font "-*-Consolas-normal-normal-normal-*-14-*-*-*-m-0-iso10646-1")
 
 ; GENERAL SETTINGS
 ;================================================================
@@ -232,20 +233,3 @@
 ; END MODES SETUP
 
 ;;; init.el ends here
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ansi-color-names-vector
-	 ["#000000" "#8b0000" "#00ff00" "#ffa500" "#7b68ee" "#dc8cc3" "#93e0e3" "#dcdccc"])
- '(custom-safe-themes
-	 (quote
-		("561ba4316ba42fe75bc07a907647caa55fc883749ee4f8f280a29516525fc9e8" "12b7ed9b0e990f6d41827c343467d2a6c464094cbcc6d0844df32837b50655f9" default)))
- '(fci-rule-color "#383838"))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )

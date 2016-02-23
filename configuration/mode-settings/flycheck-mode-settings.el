@@ -1,0 +1,5 @@
+(add-hook 'after-init-hook #'global-flycheck-mode)
+(add-hook 'js-mode-hook (lambda ()
+						  (flychecker-select-checker 'javascript-standard)
+						  (flycheck-mode)))
+(provide 'flycheck-mode-settings)
