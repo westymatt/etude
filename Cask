@@ -30,3 +30,4 @@
 
 (depends-on "tronesque-theme")
 (depends-on "cyberpunk-theme")
+(depends-on "solarized-theme")

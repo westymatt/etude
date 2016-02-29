@@ -55,6 +55,7 @@
 
 (global-set-key (kbd "C-`") (lambda () (interactive) (find-file "~/.emacs.d/init.el")))
 (global-set-key (kbd "C-;") 'evil-normal-state)
+(global-set-key (kbd "C-0") 'evil-end-of-line)
 (global-set-key (kbd "C-+") 'toggle-frame-maximized)
 (global-set-key (kbd "S-c") 'kill-ring-save)
 (global-set-key (kbd "C-c i") 'find-user-init-file)

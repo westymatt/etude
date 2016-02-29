@@ -7,12 +7,13 @@
     (when (and (>= newalpha frame-alpha-lower-limit) (<= newalpha 100))
       (modify-frame-parameters nil (list (cons 'alpha newalpha))))))
 
- ;; C-8 will increase opacity (== decrease transparency)
- ;; C-9 will decrease opacity (== increase transparency
- ;; C-0 will returns the state to normal
-(global-set-key (kbd "C-8") '(lambda()(interactive)(modify-opacity)))
-(global-set-key (kbd "C-9") '(lambda()(interactive)(modify-opacity t)))
-(global-set-key (kbd "C-0") '(lambda()(interactive)
+ ;; C shift 8 will increase opacity (== decrease transparency)
+ ;; C shift 9 will decrease opacity (== increase transparency
+ ;; C shift 0 will returns the state to normal
+
+(global-set-key (kbd "C-*") '(lambda()(interactive)(modify-opacity)))
+(global-set-key (kbd "C-(") '(lambda()(interactive)(modify-opacity t)))
+(global-set-key (kbd "C-)") '(lambda()(interactive)
                                (modify-frame-parameters nil `((alpha . 100)))))
 
 (provide 'display-ext)
