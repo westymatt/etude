@@ -91,7 +91,7 @@
 (use-package company
   :ensure t
   :config
-  (add-to-list 'company-backends 'company-tern)
+;  (add-to-list 'company-backends 'company-tern)
   (global-company-mode))
 
 (use-package helm
@@ -147,11 +147,6 @@
 	(setq js3-consistent-level-indent-inner-bracket t)
 ;  (setq js3-boring-indentation t)
 	))
-
-(use-package tern
-  :ensure t
-  :config (progn
-			(add-hook 'js3-mode-hook (lambda () (tern-mode t)))))
 
 (use-package web-mode
   :ensure t
