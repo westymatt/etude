@@ -30,8 +30,10 @@
 (depends-on "tern")
 (depends-on "company-tern")
 (depends-on "neotree")
+(depends-on "sr-speedbar")
 
 (depends-on "tronesque-theme")
 (depends-on "cyberpunk-theme")
 (depends-on "lush-theme")
 (depends-on "calmer-forest-theme")
+(depends-on "dark-mint-theme")
