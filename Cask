@@ -16,6 +16,7 @@
 (depends-on "smart-mode-line")
 (depends-on "powerline-evil")
 (depends-on "exec-path-from-shell")
+(depends-on "rainbow-delimiters")
 (depends-on "evil")
 (depends-on "god-mode")
 (depends-on "use-package")

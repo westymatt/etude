@@ -92,6 +92,12 @@
 (global-set-key (kbd "C-c u") 'uncomment-region)
 
 ;;; Modes
+(use-package rainbow-delimiters-mode
+  :config (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
+
+(use-package hl-line
+  :config (set-face-background 'hl-line "#073642"))
+
 (use-package semantic
   :config (progn
 			(semantic-mode 1)
@@ -223,9 +229,9 @@
   :config
   (progn
 	(add-hook 'after-init-hook #'global-flycheck-mode)
-	(add-hook 'js3-mode-hook (lambda ()
+	(add-hook 'js2-mode-hook (lambda ()
 							  (flychecker-select-checker 'javascript-standard)
-							  (flycheck-mode)))))
+							  (flycheck-mode nil)))))
 
 (use-package cmake-mode
   :ensure t
@@ -244,10 +250,6 @@
 			  (interactive)
 			  (when (eq major-mode 'c++-mode) (clang-format-buffer)))
 			(add-hook 'before-save-hook 'clang-format-before-save)))
-
-(use-package undo-tree
-  :diminish undo-tree-mode
-  :init (global-undo-tree-mode))
 
 (use-package evil
   :ensure t
