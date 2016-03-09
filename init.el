@@ -72,6 +72,14 @@
 (global-set-key (kbd "C-c f f") 'ff-find-other-file)
 (global-set-key (kbd "C-c s b") 'sr-speedbar-toggle)
 
+(global-set-key (kbd "C-0") 'evil-end-of-line)
+(global-set-key (kbd "C-+") 'toggle-frame-maximized)
+(global-set-key (kbd "S-c") 'kill-ring-save)
+(global-set-key (kbd "C-c r") 'reload-config)
+(global-set-key (kbd "C-x C-r") 'recentf-open-files)
+
+(move-text-default-bindings)
+
 ;;; Theme
 (load-theme 'dark-mint :no-confirm)
 
@@ -148,16 +156,12 @@
   :defer t
   :config
   (progn
+	(setq js3-auto-indent-p t)
+	(setq js3-enter-indents-newline t)
+	(setq js3-curly-indent-offset 0)
+	(setq js3-expr-indent-offset 2)
+	(setq js3-indent-on-enter-key t)
 	(setq js3-consistent-level-indent-inner-bracket t)))
-
-(use-package js2-mode
-  :ensure t
-  :defer t
-  :mode (("\\.json$" . js2-mode)
-		 ("\\.js$" . js2-mode))
-  :config
-  (progn
-	(add-hook 'js2-mode-hook (lambda () (progn (setq js2-basic-offset 2) (setq js2-bounce-indent-p t))))))
 
 (use-package tern
   :disabled t
@@ -172,11 +176,18 @@
   (progn
 	(add-to-list 'auto-mode-alist '("\\.dust\\'" . web-mode))
 	(add-to-list 'auto-mode-alist '("\\.ftl\\'" . web-mode))
+	(add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
+	(setq web-mode-markup-indent-offset 2)
+	(setq web-mode-code-indent-offset 2)
+	(setq-default indent-tabs-mode nil)
 	))
 
 (use-package less-css-mode
   :ensure t
   :defer t)
+
+(setq standard-indent 2)
+(setq css-indent-offset 2)
 
 (use-package ido
   :config
@@ -243,16 +254,19 @@
   :defer t
   :config
   (progn
-	(global-evil-leader-mode)
-	(global-set-key (kbd "C-;") 'evil-normal-state)
-	(setq evil-auto-indent t)
+	(setq evil-overriding-maps nil)
+	(setq evil-intercept-maps nil)
+	(setq evil-auto-indent nil)
 	(setq evil-regexp-search t)
-	(setq evil-want-C-i-jump t)
-	(setq evil-search-module 'evil-search
-		  evil-want-C-u-scroll t
-		  evil-want-C-w-in-emacs-state t)
 	(evil-mode 1)))
 
+(use-package recentf
+  :ensure t
+  :defer t
+  :config
+  (progn
+	(recentf-mode 1)
+	(setq recentf-max-menu-items 50)))
 
 (use-package god-mode
   :disabled t
@@ -272,4 +286,3 @@
     (load-file "~/.emacs.d/local.el"))
 
 ;;; init.el ends here
-(put 'erase-buffer 'disabled nil)
