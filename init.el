@@ -72,6 +72,7 @@
 (global-set-key (kbd "C-c f f") 'ff-find-other-file)
 (global-set-key (kbd "C-c s b") 'sr-speedbar-toggle)
 
+(global-set-key (kbd "C-;") 'evil-normal-state)
 (global-set-key (kbd "C-0") 'evil-end-of-line)
 (global-set-key (kbd "C-+") 'toggle-frame-maximized)
 (global-set-key (kbd "S-c") 'kill-ring-save)
