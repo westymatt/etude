@@ -20,6 +20,8 @@
 (setq auto-save-list-file-prefix nil)
 (setq backup-inhibited t)
 
+(setq gc-cons-threshold 100000000)
+
 (setq make-backup-files nil)
 (setq show-trailing-whitespace t)
 (toggle-truncate-lines)
@@ -67,8 +69,11 @@
   (switch-to-buffer (find-file-noselect "~/.emacs.d/init.el")))
 (global-set-key (kbd "C-c i") 'load-user-init-file-in-buffer)
 
+(global-set-key (kbd "C-c f f") 'ff-find-other-file)
+(global-set-key (kbd "C-c s b") 'sr-speedbar-toggle)
+
 ;;; Theme
-(load-theme 'lush :no-confirm)
+(load-theme 'dark-mint :no-confirm)
 
 (when (eq system-type 'darwin)
   (set-frame-font "DejaVu Sans-10" t t)
@@ -79,6 +84,15 @@
 (global-set-key (kbd "C-c u") 'uncomment-region)
 
 ;;; Modes
+(use-package semantic
+  :config (progn
+			(semantic-mode 1)
+			(global-semanticdb-minor-mode 1)
+			(global-semantic-idle-scheduler-mode 1)
+			(global-semantic-stickyfunc-mode 1)
+			(add-hook 'speedbar-load-hook (lambda() (require 'semantic/sb)))
+			(semantic-mode 1)))
+
 (use-package powerline
   :ensure t
   :config (progn
