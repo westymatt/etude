@@ -68,7 +68,7 @@
 (global-set-key (kbd "C-c i") 'load-user-init-file-in-buffer)
 
 ;;; Theme
-(load-theme 'lush :no-confirm)
+(load-theme 'cyberpunk :no-confirm)
 
 (when (eq system-type 'darwin)
   (set-frame-font "DejaVu Sans-10" t t)
@@ -79,6 +79,12 @@
 (global-set-key (kbd "C-c u") 'uncomment-region)
 
 ;;; Modes
+(use-package rainbow-delimiters-mode
+  :config (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
+
+(use-package hl-line
+  :config (set-face-background 'hl-line "#073642"))
+
 (use-package powerline
   :ensure t
   :config (progn
@@ -134,16 +140,23 @@
   :defer t
   :config
   (progn
-	(setq js3-consistent-level-indent-inner-bracket t)))
+	(setq js3-consistent-level-indent-inner-bracket t)
+	(setq js3-lazy-operators t)
+	(setq js3-lazy-commas t)
+	(setq js3-indent-level 2)
+	(setq js3-auto-indent-p t)
+	(setq js3-enter-indents-newline t)
+	(setq js3-indent-tabs-mode nil)
+	(setq js3-indent-on-enter-key t)))
 
-(use-package js2-mode
-  :ensure t
-  :defer t
-  :mode (("\\.json$" . js2-mode)
-		 ("\\.js$" . js2-mode))
-  :config
-  (progn
-	(add-hook 'js2-mode-hook (lambda () (progn (setq js2-basic-offset 2) (setq js2-bounce-indent-p t))))))
+;; (use-package js2-mode
+;;   :ensure t
+;;   :defer t
+;;   :mode (("\\.json$" . js2-mode)
+;; 		 ("\\.js$" . js2-mode))
+;;   :config
+;;   (progn
+;;	(add-hook 'js2-mode-hook (lambda () (progn (setq js2-basic-offset 2) (setq js2-bounce-indent-p t))))))
 
 (use-package tern
   :disabled t
@@ -198,9 +211,9 @@
   :config
   (progn
 	(add-hook 'after-init-hook #'global-flycheck-mode)
-	(add-hook 'js3-mode-hook (lambda ()
+	(add-hook 'js2-mode-hook (lambda ()
 							  (flychecker-select-checker 'javascript-standard)
-							  (flycheck-mode)))))
+							  (flycheck-mode nil)))))
 
 (use-package cmake-mode
   :ensure t
@@ -219,10 +232,6 @@
 			  (interactive)
 			  (when (eq major-mode 'c++-mode) (clang-format-buffer)))
 			(add-hook 'before-save-hook 'clang-format-before-save)))
-
-(use-package undo-tree
-  :diminish undo-tree-mode
-  :init (global-undo-tree-mode))
 
 (use-package evil
   :ensure t
@@ -256,6 +265,3 @@
 
 (if (file-exists-p "~/.emacs.d/local.el")
     (load-file "~/.emacs.d/local.el"))
-
-;;; init.el ends here
-(put 'erase-buffer 'disabled nil)
