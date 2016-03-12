@@ -27,6 +27,7 @@
 (toggle-truncate-lines)
 (setq-default truncate-lines 0)
 (setq-default tab-width 4)
+(setq-default indent-tabs-mode nil)
 (setq redisplay-dont-pause t)
 (setq tab-width 4)
 (setq line-number-mode t)
