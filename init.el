@@ -90,6 +90,7 @@
   (exec-path-from-shell-initialize))
 
 ;;; Bindings
+(global-set-key (kbd "M-u") 'undo-tree-redo)
 (global-set-key (kbd "C-c c") 'comment-region)
 (global-set-key (kbd "C-c u") 'uncomment-region)
 
