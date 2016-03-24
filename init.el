@@ -93,7 +93,7 @@
 (global-set-key (kbd "C-c u") 'uncomment-region)
 
 ;;; Modes
-(use-package rainbow-delimiters-mode
+(use-package rainbow-delimiters
   :config (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
 (use-package hl-line
@@ -111,7 +111,7 @@
 (use-package powerline
   :ensure t
   :config (progn
-			(powerline-evil-vim-color-theme)))
+			(powerline-default-theme)))
 
 (use-package expand-region
   :ensure t
@@ -153,6 +153,7 @@
   :ensure t
   :config
   (progn
+	(add-to-list 'projectile-globally-ignored-directories "node_modules")
 	(setq projectile-keymap-prefix (kbd "C-c p"))
 	(setq projectile-completion-system 'helm)
 	(projectile-global-mode)
@@ -163,11 +164,11 @@
   :defer t
   :config
   (progn
-	(setq js3-auto-indent-p t)
-	(setq js3-enter-indents-newline t)
-	(setq js3-curly-indent-offset 0)
-	(setq js3-expr-indent-offset 2)
-	(setq js3-indent-on-enter-key t)
+	;; (setq js3-auto-indent-p t)
+	;; (setq js3-enter-indents-newline t)
+	;; (setq js3-curly-indent-offset 0)
+	;; (setq js3-expr-indent-offset 2)
+	;; (setq js3-indent-on-enter-key t)
 	(setq js3-consistent-level-indent-inner-bracket t)))
 
 (use-package tern
@@ -178,12 +179,13 @@
 
 (use-package web-mode
   :ensure t
-  :defer t
+  :defer nil
   :config
   (progn
 	(add-to-list 'auto-mode-alist '("\\.dust\\'" . web-mode))
 	(add-to-list 'auto-mode-alist '("\\.ftl\\'" . web-mode))
-	(add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
+	(add-to-list 'auto-mode-alist '("\\.js[x]?\\'" . web-mode))
+	(setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'")))
 	(setq web-mode-markup-indent-offset 2)
 	(setq web-mode-code-indent-offset 2)
 	(setq-default indent-tabs-mode nil)
@@ -252,16 +254,17 @@
 			  (when (eq major-mode 'c++-mode) (clang-format-buffer)))
 			(add-hook 'before-save-hook 'clang-format-before-save)))
 
-(use-package evil
-  :ensure t
-  :defer t
-  :config
-  (progn
-	(setq evil-overriding-maps nil)
-	(setq evil-intercept-maps nil)
-	(setq evil-auto-indent nil)
-	(setq evil-regexp-search t)
-	(evil-mode 1)))
+;; (use-package evil
+;;   :ensure nil
+;;   :defer t
+;;   :disabled t
+;;   :config
+;;   (progn
+;; 	(setq evil-overriding-maps nil)
+;; 	(setq evil-intercept-maps nil)
+;; 	(setq evil-auto-indent nil)
+;; 	(setq evil-regexp-search t)
+;; 	(evil-mode 1)))
 
 (use-package recentf
   :ensure t
@@ -272,7 +275,6 @@
 	(setq recentf-max-menu-items 50)))
 
 (use-package god-mode
-  :disabled t
   :ensure t
   :defer t
   :init
