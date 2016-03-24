@@ -159,17 +159,29 @@
 	(projectile-global-mode)
 	(helm-projectile-on)))
 
-(use-package js3-mode
+;; (use-package js3-mode
+;;   :ensure t
+;;   :defer t
+;;   :config
+;;   (progn
+;; 	;; (setq js3-auto-indent-p t)
+;; 	;; (setq js3-enter-indents-newline t)
+;; 	;; (setq js3-curly-indent-offset 0)
+;; 	;; (setq js3-expr-indent-offset 2)
+;; 	;; (setq js3-indent-on-enter-key t)
+;; 	(setq js3-consistent-level-indent-inner-bracket t)))
+
+(use-package js2-mode
   :ensure t
   :defer t
   :config
   (progn
-	;; (setq js3-auto-indent-p t)
-	;; (setq js3-enter-indents-newline t)
-	;; (setq js3-curly-indent-offset 0)
-	;; (setq js3-expr-indent-offset 2)
-	;; (setq js3-indent-on-enter-key t)
-	(setq js3-consistent-level-indent-inner-bracket t)))
+    (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+
+    (setq js2-cleanup-whitespace t)
+    (setq js2-basic-offset 2)
+    (setq js2-bounce-indent-p t)
+    ))
 
 (use-package tern
   :disabled t
@@ -184,7 +196,6 @@
   (progn
 	(add-to-list 'auto-mode-alist '("\\.dust\\'" . web-mode))
 	(add-to-list 'auto-mode-alist '("\\.ftl\\'" . web-mode))
-	(add-to-list 'auto-mode-alist '("\\.js[x]?\\'" . web-mode))
 	(setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'")))
 	(setq web-mode-markup-indent-offset 2)
 	(setq web-mode-code-indent-offset 2)
