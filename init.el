@@ -93,7 +93,9 @@
 (global-set-key (kbd "M-u") 'undo-tree-redo)
 (global-set-key (kbd "C-c c") 'comment-region)
 (global-set-key (kbd "C-c u") 'uncomment-region)
-
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 ;;; Modes
 (use-package rainbow-delimiters-mode
   :config (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))

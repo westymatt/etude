@@ -32,6 +32,7 @@
 (depends-on "sr-speedbar")
 (depends-on "move-text")
 (depends-on "recentf")
+(depends-on "multiple-cursors")
 
 (depends-on "tronesque-theme")
 (depends-on "cyberpunk-theme")
