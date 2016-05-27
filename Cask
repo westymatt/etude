@@ -39,3 +39,5 @@
 (depends-on "lush-theme")
 (depends-on "calmer-forest-theme")
 (depends-on "dark-mint-theme")
+(depends-on "anti-zenburn-theme")
+(depends-on "alect-themes")

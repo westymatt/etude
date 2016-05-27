@@ -83,7 +83,7 @@
 (move-text-default-bindings)
 
 ;;; Theme
-(load-theme 'tronesque :no-confirm)
+(load-theme 'alect-dark :no-confirm)
 
 (when (eq system-type 'darwin)
   (set-frame-font "DejaVu Sans-10" t t)
