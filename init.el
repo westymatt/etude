@@ -83,7 +83,7 @@
 (move-text-default-bindings)
 
 ;;; Theme
-(load-theme 'dark-mint :no-confirm)
+(load-theme 'tronesque :no-confirm)
 
 (when (eq system-type 'darwin)
   (set-frame-font "DejaVu Sans-10" t t)
@@ -91,8 +91,6 @@
 
 ;;; Bindings
 (global-set-key (kbd "M-u") 'undo-tree-redo)
-(global-set-key (kbd "C-c c") 'comment-region)
-(global-set-key (kbd "C-c u") 'uncomment-region)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
@@ -185,9 +183,10 @@
   :defer t
   :config
   (progn
+    (add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
 	(add-to-list 'auto-mode-alist '("\\.dust\\'" . web-mode))
 	(add-to-list 'auto-mode-alist '("\\.ftl\\'" . web-mode))
-	(add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
+    (setq web-mode-content-types-alist '(("jsx" . "\\.jsx\\'")))
 	(setq web-mode-markup-indent-offset 2)
 	(setq web-mode-code-indent-offset 2)
 	(setq-default indent-tabs-mode nil)
@@ -197,7 +196,7 @@
   :ensure t
   :defer t)
 
-(setq standard-indent 2)
+(setq standard-indent 0)
 (setq css-indent-offset 2)
 
 (use-package ido
